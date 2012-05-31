@@ -26,11 +26,8 @@ class Evaluation {
     val csvBody = 
       for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +
         strip4CSV(v.city.get) + ";" + strip4CSV(v.zipcode.get) + ";" + strip4CSV(v.telefon.get) + ";" + strip4CSV(v.email.get) + ";" +
-        strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + "\n"
-      //for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +
-      //  strip4CSV(v.city.get) + ";" + strip4CSV(v.zipcode.get) + ";" + strip4CSV(v.telefon.get) + ";" + strip4CSV(v.email.get) + ";" +
-      //  strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + strip4CSV(v.viba) + ";" +
-      //  strip4CSV(v.spaziergang) + ";" + strip4CSV(v.besuch) + ";" + strip4CSV(v.festempfang) + ";" + strip4CSV(v.comment.get) + "\n"
+        strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + strip4CSV(v.viba) + ";" +
+        strip4CSV(v.spaziergang) + ";" + strip4CSV(v.besuch) + ";" + strip4CSV(v.festempfang) + ";" + strip4CSV(v.comment.get) + "\n"
                  
     (csvBodyHead + csvBody.mkString).getBytes("UTF-8")
   }
@@ -95,14 +92,14 @@ class Evaluation {
     var iter_erwachsene = Participant.findAll().iterator
     var iter_kinder = Participant.findAll().iterator
     
-    //var iter_viba_erwachsene = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
-    //var iter_viba_kinder = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
-    //var iter_spaziergang_erwachsene = Participant.findAll().filter(x => x.spaziergang.get.toLowerCase == "ja").iterator
-    //var iter_spaziergang_kinder = Participant.findAll().filter(x => x.spaziergang.get.toLowerCase == "ja").iterator
-    //var iter_besuch_erwachsene = Participant.findAll().filter(x => x.besuch.get.toLowerCase == "ja").iterator
-    //var iter_besuch_kinder = Participant.findAll().filter(x => x.besuch.get.toLowerCase == "ja").iterator
-    //var iter_festempfang_erwachsene = Participant.findAll().filter(x => x.festempfang.get.toLowerCase == "ja").iterator
-    //var iter_festempfang_kinder = Participant.findAll().filter(x => x.festempfang.get.toLowerCase == "ja").iterator
+    var iter_viba_erwachsene = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
+    var iter_viba_kinder = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
+    var iter_spaziergang_erwachsene = Participant.findAll().filter(x => x.spaziergang.get.toLowerCase == "ja").iterator
+    var iter_spaziergang_kinder = Participant.findAll().filter(x => x.spaziergang.get.toLowerCase == "ja").iterator
+    var iter_besuch_erwachsene = Participant.findAll().filter(x => x.besuch.get.toLowerCase == "ja").iterator
+    var iter_besuch_kinder = Participant.findAll().filter(x => x.besuch.get.toLowerCase == "ja").iterator
+    var iter_festempfang_erwachsene = Participant.findAll().filter(x => x.festempfang.get.toLowerCase == "ja").iterator
+    var iter_festempfang_kinder = Participant.findAll().filter(x => x.festempfang.get.toLowerCase == "ja").iterator
     
     // Gesamtanzahl zaehlen:
     while(iter_erwachsene.hasNext){
@@ -112,33 +109,33 @@ class Evaluation {
       kinderCount += iter_kinder.next().anz_kinder
     }
 	// Viba-Teilnehmerzahlen
-	//while(iter_viba_erwachsene.hasNext){
-    //  viba_erwachseneCount += iter_viba_erwachsene.next().anz_erwachsene
-    //}
-	//while(iter_viba_kinder.hasNext){
-	//  viba_kinderCount += iter_viba_kinder.next().anz_kinder
-	//}
+	while(iter_viba_erwachsene.hasNext){
+      viba_erwachseneCount += iter_viba_erwachsene.next().anz_erwachsene
+    }
+	while(iter_viba_kinder.hasNext){
+	  viba_kinderCount += iter_viba_kinder.next().anz_kinder
+	}
     // Spaziergang-Teilnehmerzahlen
-	//while(iter_spaziergang_erwachsene.hasNext){
-    //  spaziergang_erwachseneCount += iter_spaziergang_erwachsene.next().anz_erwachsene
-    //}
-	//while(iter_spaziergang_kinder.hasNext){
-	//  spaziergang_kinderCount += iter_spaziergang_kinder.next().anz_kinder
-	//}
+	while(iter_spaziergang_erwachsene.hasNext){
+      spaziergang_erwachseneCount += iter_spaziergang_erwachsene.next().anz_erwachsene
+    }
+	while(iter_spaziergang_kinder.hasNext){
+	  spaziergang_kinderCount += iter_spaziergang_kinder.next().anz_kinder
+	}
     // Besuch-Teilnehmerzahlen
-	//while(iter_besuch_erwachsene.hasNext){
-    //  besuch_erwachseneCount += iter_besuch_erwachsene.next().anz_erwachsene
-    //}
-	//while(iter_besuch_kinder.hasNext){
-	//  besuch_kinderCount += iter_besuch_kinder.next().anz_kinder
-	//}	
+	while(iter_besuch_erwachsene.hasNext){
+      besuch_erwachseneCount += iter_besuch_erwachsene.next().anz_erwachsene
+    }
+	while(iter_besuch_kinder.hasNext){
+	  besuch_kinderCount += iter_besuch_kinder.next().anz_kinder
+	}	
     // Festempfang-Teilnehmerzahlen
-	//while(iter_festempfang_erwachsene.hasNext){
-    //  festempfang_erwachseneCount += iter_festempfang_erwachsene.next().anz_erwachsene
-    //}
-	//while(iter_festempfang_kinder.hasNext){
-	//  festempfang_kinderCount += iter_festempfang_kinder.next().anz_kinder
-	//}	
+	while(iter_festempfang_erwachsene.hasNext){
+      festempfang_erwachseneCount += iter_festempfang_erwachsene.next().anz_erwachsene
+    }
+	while(iter_festempfang_kinder.hasNext){
+	  festempfang_kinderCount += iter_festempfang_kinder.next().anz_kinder
+	}	
 	
 	
     <table>
@@ -150,9 +147,7 @@ class Evaluation {
           Kinder: {kinderCount}
         </td>
       </tr>
-    </table>
-          
-    /*      
+    </table>     
       <table>
         <tr>
             <b>Teilnehmer an Viba Erlebnisfuehrung:</b>
@@ -192,7 +187,6 @@ class Evaluation {
             Kinder: {festempfang_kinderCount}
           </td>
         </tr>
-      </table>
-    */        
+      </table>       
   }
 }
