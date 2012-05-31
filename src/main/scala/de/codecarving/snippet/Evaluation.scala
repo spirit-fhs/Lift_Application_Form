@@ -81,14 +81,14 @@ class Evaluation {
   def stats() = {
 	var erwachseneCount = 0
     var kinderCount = 0
-    var viba_erwachseneCount = 0
-    var viba_kinderCount = 0
-    var spaziergang_erwachseneCount = 0
-    var spaziergang_kinderCount = 0
-    var besuch_erwachseneCount = 0
-    var besuch_kinderCount = 0
-    var festempfang_erwachseneCount = 0
-    var festempfang_kinderCount = 0
+    //var viba_erwachseneCount = 0
+    //var viba_kinderCount = 0
+    //var spaziergang_erwachseneCount = 0
+    //var spaziergang_kinderCount = 0
+    //var besuch_erwachseneCount = 0
+    //var besuch_kinderCount = 0
+    //var festempfang_erwachseneCount = 0
+    //var festempfang_kinderCount = 0
     var iter_erwachsene = Participant.findAll().iterator
     var iter_kinder = Participant.findAll().iterator
     
