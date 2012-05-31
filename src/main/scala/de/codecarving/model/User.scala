@@ -11,8 +11,8 @@ object User extends User with MetaMegaProtoUser[User] {
   override def signupFields = firstName :: email :: password :: Nil
 
   override def menus =
-    //List(loginMenuLoc, createUserMenuLoc, changePasswordMenuLoc, logoutMenuLoc).flatten
-    List(loginMenuLoc, logoutMenuLoc).flatten
+  List(loginMenuLoc, createUserMenuLoc, changePasswordMenuLoc, logoutMenuLoc).flatten
+  //List(loginMenuLoc, logoutMenuLoc).flatten
 
   override def skipEmailValidation = true
 
