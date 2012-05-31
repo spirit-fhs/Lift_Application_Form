@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
 
 class Evaluation {
   
-  /**
+   /**
    * Building the CSV String together for Exporting and Downloading user Informations as CSV Files.
    */
   def buildCSV(in: List[Participant]) = {
@@ -21,7 +21,7 @@ class Evaluation {
     }
     
     val csvBodyHead = 
-      "Vorname;Nachname;Straße;Ort;PLZ;Telefon;E-Mail;Teilnehmerzahl;Kinder;Viba;Wanderung;Besuch_Informatik;Festempfang;Kommentar\n"
+      "Vorname;Nachname;Strasse;Ort;PLZ;Telefon;E-Mail;Teilnehmerzahl;Kinder;Viba;Wanderung;Besuch_Informatik;Festempfang;Kommentar\n"
     
     val csvBody = 
       for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +
@@ -33,8 +33,8 @@ class Evaluation {
   }
   
   /**
-   * Listing all Participants on /eval.
-   */
+  * Listing all Participants on /eval.
+  */
   def list() = {
     val allParticipants = Participant.findAll()
     
@@ -58,8 +58,8 @@ class Evaluation {
   }
   
   /**
-   * Giving extra exportOptions on the /eval page.
-   */
+  * Giving extra exportOptions on the /eval page.
+  */
   def exportOptions() = {
     val allParticipants = Participant.findAll()
     
@@ -69,16 +69,16 @@ class Evaluation {
           {SHtml.link("/download", () => HM.CurrentDownload(
                                             HM.return4Download(buildCSV(allParticipants), 
                                                                "Teilnehmer", "text/csv", "csv")), 
-                                                               Text("CSV Export für Alle"))}
+                                                               Text("CSV Export fï¿½r Alle"))}
         </td>
       </tr>
     </table>
   }
   
   /**
-   * Some small stats about the Participants on /eval.
-   */
- def stats() = {
+  * Some small stats about the Participants on /eval.
+  */
+  def stats() = {
 	var erwachseneCount = 0
     var kinderCount = 0
     var viba_erwachseneCount = 0
@@ -115,14 +115,14 @@ class Evaluation {
 	while(iter_viba_kinder.hasNext){
 	  viba_kinderCount += iter_viba_kinder.next().anz_kinder
 	}
-	// Spaziergang-Teilnehmerzahlen
+    // Spaziergang-Teilnehmerzahlen
 	while(iter_spaziergang_erwachsene.hasNext){
       spaziergang_erwachseneCount += iter_spaziergang_erwachsene.next().anz_erwachsene
     }
 	while(iter_spaziergang_kinder.hasNext){
 	  spaziergang_kinderCount += iter_spaziergang_kinder.next().anz_kinder
 	}
-	// Besuch-Teilnehmerzahlen
+    // Besuch-Teilnehmerzahlen
 	while(iter_besuch_erwachsene.hasNext){
       besuch_erwachseneCount += iter_besuch_erwachsene.next().anz_erwachsene
     }
