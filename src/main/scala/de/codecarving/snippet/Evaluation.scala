@@ -21,7 +21,7 @@ class Evaluation {
     }
     
     val csvBodyHead = 
-      "Vorname;Nachname;Stra�e;Ort;PLZ;Telefon;E-Mail;Teilnehmerzahl;Kinder;Viba;Wanderung;Besuch_Informatik;Festempfang;Kommentar\n"
+      "Vorname;Nachname;Straße;Ort;PLZ;Telefon;E-Mail;Teilnehmerzahl;Kinder;Viba;Wanderung;Besuch_Informatik;Festempfang;Kommentar\n"
     
     val csvBody = 
       for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +

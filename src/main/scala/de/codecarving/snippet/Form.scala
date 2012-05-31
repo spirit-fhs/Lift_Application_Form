@@ -9,8 +9,7 @@ import net.liftweb.mapper.MapperRules
 import net.liftweb.http.{ SHtml, FileParamHolder, SessionVar }
 
 class Form {
-  
-  
+    
   object p extends SessionVar[Participant](Participant.create)
   
   def validateForm = {
