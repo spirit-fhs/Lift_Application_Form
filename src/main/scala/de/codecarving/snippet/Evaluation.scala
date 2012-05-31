@@ -26,8 +26,11 @@ class Evaluation {
     val csvBody = 
       for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +
         strip4CSV(v.city.get) + ";" + strip4CSV(v.zipcode.get) + ";" + strip4CSV(v.telefon.get) + ";" + strip4CSV(v.email.get) + ";" +
-        strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + strip4CSV(v.viba) + ";" +
-        strip4CSV(v.spaziergang) + ";" + strip4CSV(v.besuch) + ";" + strip4CSV(v.festempfang) + ";" + strip4CSV(v.comment.get) + "\n"
+        strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + "\n"
+      //for(v <- in) yield strip4CSV(v.firstname.get) + ";" + strip4CSV(v.lastname.get) + ";" + strip4CSV(v.street.get) + ";" +
+      //  strip4CSV(v.city.get) + ";" + strip4CSV(v.zipcode.get) + ";" + strip4CSV(v.telefon.get) + ";" + strip4CSV(v.email.get) + ";" +
+      //  strip4CSV(v.anz_erwachsene.toString()) + ";" + strip4CSV(v.anz_kinder.toString()) + "; " + strip4CSV(v.viba) + ";" +
+      //  strip4CSV(v.spaziergang) + ";" + strip4CSV(v.besuch) + ";" + strip4CSV(v.festempfang) + ";" + strip4CSV(v.comment.get) + "\n"
                  
     (csvBodyHead + csvBody.mkString).getBytes("UTF-8")
   }
