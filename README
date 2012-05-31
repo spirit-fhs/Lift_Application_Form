@@ -1,0 +1,14 @@
+Running SBT 0.11 installation is required.(https://github.com/harrah/xsbt/wiki)
+
+Getting Started:
+
+Clone this repository.
+run:
+$ sbt 
+
+If this works without any errors go on with editing the Prop file as needed.
+
+After everything is set up, run:
+$ sbt 
+> ~container:start
+should give a Welcome screen at http://localhost:8080
