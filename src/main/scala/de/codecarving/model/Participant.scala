@@ -10,18 +10,18 @@ class Participant extends LongKeyedMapper[Participant] with IdPK {
   object city extends MappedString(this, 100) 
   object street extends MappedString(this, 100)
   object zipcode extends MappedString(this, 100)
+  object telefon extends MappedString(this, 100)
   object email extends MappedEmail(this, 100)
   
-  object university extends MappedString(this, 100)
-  object studycourse extends MappedString(this, 100)
-  object status extends MappedString(this, 100)
+  object anz_erwachsene extends MappedInt(this)
+  object anz_kinder extends MappedInt(this)
   
-  object matrnr extends MappedString(this, 100)
-  object semester extends MappedString(this, 100)
+  object veranstaltung
   
-  object matrcert extends MappedBinary(this)
-  object filename extends MappedString(this, 100)
-  object filetype extends MappedString(this, 100)
+  object viba extends MappedString(this, 100)
+  object spaziergang extends MappedString(this, 100)
+  object besuch extends MappedString(this, 100)
+  object festempfang extends MappedString(this, 100)
   
   object comment extends MappedTextarea(this, 10000) {
     
@@ -34,4 +34,4 @@ class Participant extends LongKeyedMapper[Participant] with IdPK {
 object Participant extends Participant with LongKeyedMetaMapper[Participant] {
   override def dbTableName = "participant"
 
-}
+} 

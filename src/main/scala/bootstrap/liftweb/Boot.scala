@@ -11,10 +11,11 @@ import Loc._
 import mapper._
 
 import de.codecarving.model.Participant
+import de.codecarving.model.User
 import de.codecarving.lib.HelperMethods.CurrentDownload
 
-import de.codecarving.fhsldap.fhsldap
-import de.codecarving.fhsldap.model.User
+//import de.codecarving.fhsldap.fhsldap
+//import de.codecarving.fhsldap.model.User
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -22,6 +23,14 @@ import de.codecarving.fhsldap.model.User
  */
 class Boot {
   def boot {
+    
+    //SiteMap
+    val ifLoggedIn =
+      If(() => User.loggedIn_?, () => RedirectResponse(User.loginPageURL))
+    val homeMenu = Menu("Home") / "index"
+    val auswertungMenu = Menu("Auswertung") / "eval" >> ifLoggedIn
+    val menus = homeMenu :: auswertungMenu :: User.menus
+    LiftRules.setSiteMap(SiteMap(menus: _*))
     
     // where to search snippet
     LiftRules.addToPackages("de.codecarving")
@@ -36,21 +45,23 @@ class Boot {
       DB.defineConnectionManager(DefaultConnectionIdentifier, vendor)
 
       Schemifier.schemify(true, Schemifier.infoF _, Participant)
+      Schemifier.schemify(true, Schemifier.infoF _, User)
     }
 
     // Creating a LocParam 
-    val loggedInAdmin = If(() => User.isAdmin, () => RedirectResponse("/index"))
+    // val loggedInAdmin = If(() => User.isAdmin, () => RedirectResponse("/index"))
     
     
     // Build SiteMap
-    def sitemap(): SiteMap = SiteMap(
-      Menu.i("Home") / "index",
-      Menu.i("Auswertung") / "eval" >> loggedInAdmin
-    )
+    // def sitemap(): SiteMap = SiteMap(
+    //  Menu.i("Home") / "index",
+    //  Menu.i("Anmeldung") / "login",
+    //  Menu.i("Auswertung") / "eval" // >> loggedInAdmin
+    // )
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
-    LiftRules.setSiteMapFunc(() => sitemap())
+    // LiftRules.setSiteMapFunc(() => sitemap())
 
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
@@ -78,7 +89,7 @@ class Boot {
     }
     
     // Initalizing FhS-LDAP-Module for fhs-id login.
-    fhsldap.init
+    // fhsldap.init
       
   }
-}
+} 
