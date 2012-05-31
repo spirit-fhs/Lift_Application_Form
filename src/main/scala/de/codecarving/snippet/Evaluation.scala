@@ -89,8 +89,8 @@ class Evaluation {
     //var besuch_kinderCount = 0
     //var festempfang_erwachseneCount = 0
     //var festempfang_kinderCount = 0
-    //var iter_erwachsene = Participant.findAll().iterator
-    //var iter_kinder = Participant.findAll().iterator
+    var iter_erwachsene = Participant.findAll().iterator
+    var iter_kinder = Participant.findAll().iterator
     
     //var iter_viba_erwachsene = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
     //var iter_viba_kinder = Participant.findAll().filter(x => x.viba.get.toLowerCase == "ja").iterator
