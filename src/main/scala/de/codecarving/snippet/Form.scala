@@ -26,7 +26,6 @@ class Form {
     (validateEmail)
    
   }
-  
   def process() = {
      validateForm match {
         case (false) =>
